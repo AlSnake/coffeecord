@@ -1,5 +1,6 @@
 package command.commands.utility;
 
+import coffeecord.Util;
 import command.CommandContext;
 import command.CommandManager;
 import command.ICommand;
@@ -9,6 +10,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
 
 public class HelpCommand implements ICommand {
@@ -50,12 +52,27 @@ public class HelpCommand implements ICommand {
         embed.addField("\u276F Home Server", "[CoffeeCord](https://discord.gg/WYJgdKbfKK)", true);
         embed.addField("\u276F Invite Bot", "[CoffeeCord](" + botInviteUrl + ")", true);
         embed.addField("\u276F Author", "[Enforcer](https://github.com/lowlevelenforcer)", true);
-
-        embed.addField("\u276F Utility", "`help` " +
-                "`ping` " +
-                "`info [bot/enforcer]` ", true);
+        embed.getFields().addAll(getCommandsEmbed().getFields());
 
         embed.setFooter("\u276F \u00A9 2021 Enforcer");
         return embed;
     }
+
+	private EmbedBuilder getCommandsEmbed() {
+		EmbedBuilder embed = new EmbedBuilder();
+		HashMap<String, List<ICommand>> commands = Util.getCurrentPackageHashmap(CommandManager.getCommands());
+		StringBuilder fields = new StringBuilder();
+
+		for(var entry: commands.entrySet()) {
+			String section = entry.getKey();
+			for(var value: entry.getValue()) {
+				var command = value.getCommand();
+				fields.append("`" + command + "` ");
+			}
+			embed.addField("\u276F " + Util.capitalize(section), fields.toString(), true);
+			fields.setLength(0);
+		}
+
+		return embed;
+	}
 }

@@ -1,5 +1,7 @@
 package command;
 
+import command.commands.superuser.ServerCommand;
+import command.commands.superuser.ShutdownCommand;
 import command.commands.utility.HelpCommand;
 import command.commands.utility.InfoCommand;
 import command.commands.utility.PingCommand;
@@ -15,6 +17,10 @@ public class CommandManager {
     private static List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
+    	// Superuser commands
+		addCommand(new ShutdownCommand());
+		addCommand(new ServerCommand());
+
         // Utility Commands
         addCommand(new PingCommand());
         addCommand(new HelpCommand());
@@ -39,6 +45,10 @@ public class CommandManager {
     private boolean findCommand(ICommand command) {
         return getCommand(command.getCommand()) != null;
     }
+
+    public static List<ICommand> getCommands() {
+    	return commands;
+	}
 
     public void handle(GuildMessageReceivedEvent event) {
         String[] raw = event.getMessage().getContentRaw().replaceFirst("(?i)" + Pattern.quote(Config.get("prefix")), "").split("\\s+");

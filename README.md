@@ -13,6 +13,10 @@ CoffeeCord Discord Bot
 
 commands:
 
+	Superuser:
+		server [ip]
+		shutdown
+
     Utilities:
         help, help [COMMAND]
         ping

@@ -23,8 +23,8 @@ public class CoffeeCord {
         try {
             String token = Config.get("token");
             run(token);
-        } catch (LoginException ex) {
-        	LOGGER.error(ex.getMessage());
+        } catch (Exception e) {
+        	LOGGER.error(e.getMessage());
         }
     }
 }
