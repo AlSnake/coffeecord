@@ -1,5 +1,6 @@
 package command;
 
+import command.commands.moderation.*;
 import command.commands.superuser.ServerCommand;
 import command.commands.superuser.ShutdownCommand;
 import command.commands.utility.HelpCommand;
@@ -17,9 +18,16 @@ public class CommandManager {
     private static List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
-    	// Superuser commands
+    	// Superuser Commands
 		addCommand(new ShutdownCommand());
 		addCommand(new ServerCommand());
+
+		// Mod Commands
+		addCommand(new KickCommand());
+		addCommand(new BanCommand());
+		addCommand(new UnbanCommand());
+		addCommand(new MuteCommand());
+		addCommand(new UnmuteCommand());
 
         // Utility Commands
         addCommand(new PingCommand());

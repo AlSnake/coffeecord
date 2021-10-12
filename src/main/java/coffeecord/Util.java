@@ -1,8 +1,14 @@
 package coffeecord;
 
 import config.Config;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.requests.restaction.RoleAction;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,5 +49,26 @@ public class Util {
 		}
 
 		return map;
+	}
+
+	public static boolean memberHasRole(Member member, Role role) {
+		for(var mr: member.getRoles())
+			if(mr == role)
+				return true;
+
+		return false;
+	}
+
+	public static Role getMuteRole(Guild guild) {
+		if(guild.getRolesByName("coffeemute", true).isEmpty()) {
+			RoleAction role = guild.createRole();
+			role.setName("coffeemute");
+			role.setColor(Color.GRAY);
+			role.setPermissions(Permission.VIEW_CHANNEL);
+			role.setMentionable(false);
+			role.complete();
+		}
+
+		return guild.getRolesByName("coffeemute", true).get(0);
 	}
 }
