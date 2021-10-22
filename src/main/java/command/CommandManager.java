@@ -3,8 +3,11 @@ package command;
 import command.commands.moderation.*;
 import command.commands.superuser.ServerCommand;
 import command.commands.superuser.ShutdownCommand;
+import command.commands.text.HasteCommand;
+import command.commands.text.MD5Command;
 import command.commands.utility.HelpCommand;
 import command.commands.utility.InfoCommand;
+import command.commands.utility.InviteCommand;
 import command.commands.utility.PingCommand;
 import config.Config;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -33,6 +36,11 @@ public class CommandManager {
         addCommand(new PingCommand());
         addCommand(new HelpCommand());
         addCommand(new InfoCommand());
+        addCommand(new InviteCommand());
+
+        // Text Commands
+		addCommand(new HasteCommand());
+		addCommand(new MD5Command());
     }
 
     public void addCommand(ICommand command) {

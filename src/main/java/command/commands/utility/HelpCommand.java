@@ -51,10 +51,10 @@ public class HelpCommand implements ICommand {
 
         embed.addField("\u276F Home Server", "[CoffeeCord](https://discord.gg/WYJgdKbfKK)", true);
         embed.addField("\u276F Invite Bot", "[CoffeeCord](" + botInviteUrl + ")", true);
-        embed.addField("\u276F Author", "[Enforcer](https://github.com/lowlevelenforcer)", true);
+        embed.addField("\u276F Author", "[AlSnake](https://github.com/AlSnake)", true);
         embed.getFields().addAll(getCommandsEmbed().getFields());
 
-        embed.setFooter("\u276F \u00A9 2021 Enforcer");
+        embed.setFooter("\u276F \u00A9 2021 AlSnake");
         return embed;
     }
 

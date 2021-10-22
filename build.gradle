@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.github.lowlevelenforcer'
+group 'com.github.alsnake'
 version '0.0.1'
 
 apply plugin: 'application'

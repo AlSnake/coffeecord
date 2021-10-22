@@ -25,8 +25,8 @@ public class InfoCommand implements ICommand {
             return;
         }
 
-        if(args.get(0).equals("enforcer"))
-            channel.sendMessageEmbeds(getEnforcerInfoEmbed().build()).queue();
+        if(args.get(0).equals("alsnake"))
+            channel.sendMessageEmbeds(getAlSnakeInfoEmbed().build()).queue();
         else if(args.get(0).equals("bot"))
             channel.sendMessageEmbeds(getBotInfoEmbed().build()).queue();
         else
@@ -40,18 +40,18 @@ public class InfoCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Get Info about Enforcer or Bot\ninfo [bot/enforcer]\n";
+        return "Get Info about AlSnake or Bot\ninfo [bot/alsnake]\n";
     }
 
-    private EmbedBuilder getEnforcerInfoEmbed() {
+    private EmbedBuilder getAlSnakeInfoEmbed() {
         EmbedBuilder embed = new EmbedBuilder();
-        embed.setTitle("Enforcer Info");
+        embed.setTitle("AlSnake Info");
         embed.setColor(Color.CYAN);
 
-        embed.addField("\u276F Enforcer Discord Server", "[Enforcer](https://discord.gg/556T79UhYr)", true);
-        embed.addField("\u276F Enforcer Github", "[Enforcer](https://github.com/lowlevelenforcer)", true);
+        embed.addField("\u276F AlSnake Discord Server", "[AlSnake](https://discord.gg/556T79UhYr)", true);
+        embed.addField("\u276F AlSnake Github", "[AlSnake](https://github.com/AlSnake)", true);
 
-        embed.setFooter("\u00A9 2021 Enforcer");
+        embed.setFooter("\u00A9 2021 AlSnake");
         return embed;
     }
 
@@ -63,11 +63,11 @@ public class InfoCommand implements ICommand {
         embed.addField("\u276F Home Server", "[CoffeeCord](https://discord.gg/WYJgdKbfKK)", true);
         embed.addField("\u276F Invite Bot", "[CoffeeCord](" + botInviteUrl + ")", true);
         embed.addField("\u276F Servers", Integer.toString(numberOfGuilds), true);
-        embed.addField("\u276F Source Code", "[Github](https://github.com/lowlevelenforcer/coffeecord)", true);
+        embed.addField("\u276F Source Code", "[Github](https://github.com/AlSnake/coffeecord)", true);
         embed.addField("\u276F Version", "0.0.1", true);
-        embed.addField("\u276F Author", "Enforcer", true);
+        embed.addField("\u276F Author", "AlSnake", true);
 
-        embed.setFooter("\u00A9 2021 Enforcer");
+        embed.setFooter("\u00A9 2021 AlSnake");
         return embed;
     }
 }
